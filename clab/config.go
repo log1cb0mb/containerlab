@@ -56,7 +56,6 @@ var kinds = []string{
 	"sonic-vs",
 	"vr-ftosv",
 	"vr-n9kv",
-	"vr-ftosv",
 	"vr-sros",
 	"vr-vmx",
 	"vr-xrv",
