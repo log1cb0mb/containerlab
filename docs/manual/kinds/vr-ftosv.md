@@ -1,50 +1,43 @@
-# Cisco Nexus 9000v
+# Dell FTOSv (OS10) / ftosv
 
-Cisco Nexus900v virtualized router is identified with `vr-n9kv` kind in the [topology file](../topo-def-file.md). It is built using [vrnetlab](../vrnetlab.md) project and essentially is a Qemu VM packaged in a docker container format.
+Dell FTOSv (OS10) virtualized router/switch is identified with `vr-ftosv` kind in the [topology file](../topo-def-file.md). It is built using [vrnetlab](../vrnetlab.md) project and essentially is a Qemu VM packaged in a docker container format.
 
-vr-n9kv nodes launched with containerlab comes up pre-provisioned with SSH, SNMP, NETCONF, NXAPI and gRPC services enabled.
+vr-ftosv nodes launched with containerlab comes up pre-provisioned with SSH and SNMP services enabled.
 
-## Managing vr-n9kv nodes
+## Managing vr-ftosv nodes
 
 !!!note
-    Containers with Nexus 9000v inside will take ~8-10min to fully boot.  
+    Containers with FTOS10v inside will take ~2-4min to fully boot.  
     You can monitor the progress with `docker logs -f <container-name>`.
 
-Cisco Nexus 9000v node launched with containerlab can be managed via the following interfaces:
+Dell FTOS10v node launched with containerlab can be managed via the following interfaces:
 
 === "bash"
-    to connect to a `bash` shell of a running vr-n9kv container:
+    to connect to a `bash` shell of a running vr-ftosv container:
     ```bash
     docker exec -it <container-name/id> bash
     ```
 === "CLI"
-    to connect to the Nexus 9000v CLI
+    to connect to the Dell FTOSv CLI
     ```bash
     ssh admin@<container-name/id>
     ```
-=== "NETCONF"
-    NETCONF server is running over port 830
-    ```bash
-    ssh admin@<container-name> -p 830 -s netconf
-    ```
-=== "gRPC"
-    gRPC server is running over port 50051
 
 !!!info
     Default user credentials: `admin:admin`
 
 ## Interfaces mapping
-vr-n9kv container can have up to 128 interfaces and uses the following mapping rules:
+vr-ftosv container can have different number of available interfaces which depends on platform used under FTOS10 virtualization .qcow2 disk and container image built using [vrnetlab](../vrnetlab.md) project. Interfaces uses the following mapping rules (in topology file):
 
 * `eth0` - management interface connected to the containerlab management network
-* `eth1` - first data interface, mapped to first data port of Nexus 9000v line card
+* `eth1` - first data interface, mapped to first data port of FTOS10v line card
 * `eth2+` - second and subsequent data interface
 
-When containerlab launches vr-n9kv node, it will assign IPv4/6 address to the `eth0` interface. These addresses can be used to reach management plane of the router.
+When containerlab launches vr-ftosv node, it will assign IPv4/6 address to the `eth0` interface. These addresses can be used to reach management plane of the router.
 
 Data interfaces `eth1+` needs to be configured with IP addressing manually using CLI/management protocols.
 
 
 ## Features and options
 ### Node configuration
-vr-n9kv nodes come up with a basic configuration where only `admin` user and management interfaces such as NETCONF, NXAPI and GRPC provisioned.
+vr-ftosv nodes come up with a basic configuration where only `admin` user and management interfaces such as SSH provisioned.

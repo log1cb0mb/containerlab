@@ -9,7 +9,6 @@ import (
 	"fmt"
 
 	"github.com/srl-labs/containerlab/nodes"
-	"github.com/log1cb0mb/containerlab/nodes"
 	"github.com/srl-labs/containerlab/runtime"
 	"github.com/srl-labs/containerlab/types"
 	"github.com/srl-labs/containerlab/utils"

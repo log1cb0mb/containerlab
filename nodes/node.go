@@ -36,7 +36,7 @@ const (
 	NodeKindVrCSR      = "vr-csr"
 	NodeKindVrPAN      = "vr-pan"
 	NodeKindVrN9KV     = "vr-n9kv"
-	NodeKindVrFTOSV     = "vr-ftosv"
+	NodeKindVrFTOSV    = "vr-ftosv"
 	NodeKindVrROS      = "vr-ros"
 	NodeKindVrSROS     = "vr-sros"
 	NodeKindVrVEOS     = "vr-veos"
